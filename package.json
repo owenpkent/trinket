@@ -1,0 +1,62 @@
+{
+  "name": "trinket",
+  "displayName": "Trinket",
+  "description": "A desktop shelf of mouse-driven fidget toys, and a small SDK for building your own.",
+  "version": "0.1.0",
+  "private": false,
+  "license": "MIT",
+  "author": "Owen Kent",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/owenpkent/trinket.git"
+  },
+  "bugs": {
+    "url": "https://github.com/owenpkent/trinket/issues"
+  },
+  "homepage": "https://github.com/owenpkent/trinket#readme",
+  "keywords": [
+    "fidget",
+    "toy",
+    "canvas",
+    "webgl",
+    "simulation",
+    "falling-sand",
+    "lava-lamp",
+    "tauri"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run check-types && vite build",
+    "preview": "vite preview",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "tauri": "tauri",
+    "icon": "node scripts/make-icon.mjs && tauri icon assets/icon.png",
+    "desktop": "tauri dev",
+    "desktop:build": "tauri build",
+    "verify": "npm run check-types && npm run lint && npm run test"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@tauri-apps/cli": "^2.9.0",
+    "@types/node": "^26.1.2",
+    "eslint": "^10.8.0",
+    "globals": "^17.8.0",
+    "prettier": "^3.9.6",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.65.0",
+    "vite": "^7.3.1",
+    "vitest": "^4.1.10"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.9.0"
+  }
+}

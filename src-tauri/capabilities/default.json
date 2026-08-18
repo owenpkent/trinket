@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Trinket runs entirely offline in its own window, so it needs nothing beyond the core window APIs.",
+  "windows": ["main"],
+  "permissions": ["core:default", "core:window:allow-set-always-on-top"]
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Trinket",
+  "version": "0.1.0",
+  "identifier": "studio.ok.trinket",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:5173",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Trinket",
+        "width": 1100,
+        "height": 720,
+        "minWidth": 420,
+        "minHeight": 320,
+        "resizable": true,
+        "visible": false,
+        "theme": "Dark",
+        "backgroundColor": "#0b0d12"
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "category": "Utility",
+    "shortDescription": "A shelf of mouse-driven fidget toys.",
+    "longDescription": "Trinket is a small desktop shelf of mouse-driven fidget toys: a lava lamp, a falling-sand sandbox, a ripple pool and a pot of magnetic goo. Each one is a single file built against a tiny toy SDK, so adding your own is a short afternoon.",
+    "copyright": "Copyright (c) Owen Kent",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  }
+}

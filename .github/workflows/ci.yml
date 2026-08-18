@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Types, lint and tests
+        run: npm run verify
+
+      - name: Formatting
+        run: npm run format:check
+
+      - name: Build
+        run: npm run build
+
+  prose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # House style: no em dashes anywhere in source or docs. They are hard to
+      # type, and a comma or a full stop always works instead.
+      - name: No em dashes
+        # The pattern is written as an escape on purpose. Spelling the character
+        # out here would make this job fail on its own workflow file.
+        run: |
+          if rg -n --glob '!node_modules' --glob '!package-lock.json' '\x{2014}' .; then
+            echo "::error::Found an em dash. Use a comma, colon, parentheses or a full stop."
+            exit 1
+          fi
+          echo "Clean."

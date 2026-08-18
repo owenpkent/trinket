@@ -1,0 +1,16 @@
+node_modules/
+dist/
+dist-ssr/
+*.local
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+src-tauri/target/
+src-tauri/gen/schemas/
+_scratch/
+
+# Generated from assets/icon.svg by `npm run icon`.
+assets/icon.png
+*.tsbuildinfo

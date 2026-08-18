@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#161b26" />
+      <stop offset="1" stop-color="#0a0c11" />
+    </linearGradient>
+    <radialGradient id="wax" cx="0.4" cy="0.35" r="0.75">
+      <stop offset="0" stop-color="#ffb347" />
+      <stop offset="0.55" stop-color="#ff7a3d" />
+      <stop offset="1" stop-color="#b3184d" />
+    </radialGradient>
+    <radialGradient id="cool" cx="0.45" cy="0.35" r="0.8">
+      <stop offset="0" stop-color="#8fb0ff" />
+      <stop offset="1" stop-color="#3f5ed6" />
+    </radialGradient>
+    <radialGradient id="heater" cx="0.5" cy="1" r="0.7">
+      <stop offset="0" stop-color="#ff7a3d" stop-opacity="0.55" />
+      <stop offset="1" stop-color="#ff7a3d" stop-opacity="0" />
+    </radialGradient>
+    <!-- Gooey filter: blur then raise contrast on alpha, which is the classic
+         way to make separate circles merge like metaballs. -->
+    <filter id="goo" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="26" result="blur" />
+      <feColorMatrix in="blur" type="matrix"
+        values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 26 -12" result="goo" />
+    </filter>
+  </defs>
+
+  <rect width="1024" height="1024" rx="224" fill="url(#glass)" />
+  <rect width="1024" height="1024" rx="224" fill="url(#heater)" />
+
+  <g filter="url(#goo)">
+    <circle cx="430" cy="430" r="168" fill="url(#wax)" />
+    <circle cx="596" cy="556" r="132" fill="url(#wax)" />
+    <circle cx="520" cy="500" r="96" fill="url(#wax)" />
+    <circle cx="672" cy="330" r="74" fill="url(#cool)" />
+  </g>
+
+  <circle cx="380" cy="372" r="46" fill="#ffffff" opacity="0.28" />
+  <rect x="24" y="24" width="976" height="976" rx="204" fill="none"
+        stroke="#ffffff" stroke-opacity="0.07" stroke-width="6" />
+</svg>
