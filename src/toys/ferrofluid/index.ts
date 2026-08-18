@@ -106,6 +106,15 @@ export default defineToy({
       }
     });
 
+    // Attract mode. With no cursor on the canvas yet, a virtual magnet walks a
+    // slow path so the goo is doing something when you arrive; a still puddle
+    // gives no hint that it is magnetic at all. It stops for good the first time
+    // the real pointer enters, and never competes with it.
+    let touched = false;
+    let magnetX = 0;
+    let magnetY = 0;
+    let magnetLive = false;
+
     const update = (dt: number): void => {
       syncCount();
       const short = Math.min(ctx.width, ctx.height);
@@ -124,7 +133,14 @@ export default defineToy({
       comX /= particles.length;
       comY /= particles.length;
 
-      const magnetActive = pointer.inside && magnetStrength > 0;
+      if (pointer.inside) touched = true;
+      const idle = !touched;
+      // Two sines at unrelated frequencies, so the path never repeats tightly.
+      magnetX = idle ? ctx.width * (0.5 + 0.3 * Math.sin(ctx.time * 0.55)) : pointer.x;
+      magnetY = idle ? ctx.height * (0.5 + 0.26 * Math.sin(ctx.time * 0.87)) : pointer.y;
+
+      const magnetActive = (idle || pointer.inside) && magnetStrength > 0;
+      magnetLive = magnetActive;
       const reach = short * 0.55;
       const repelling = pointer.secondary;
       const grabbing = pointer.primary;
@@ -143,8 +159,8 @@ export default defineToy({
 
         let influence = 0;
         if (magnetActive) {
-          const mx = pointer.x - particle.x;
-          const my = pointer.y - particle.y;
+          const mx = magnetX - particle.x;
+          const my = magnetY - particle.y;
           const dist = Math.max(Math.hypot(mx, my), short * 0.03);
           // Clamped inverse square. Without the clamp the nearest particle gets
           // launched through the wall the instant the cursor touches it.
@@ -222,10 +238,12 @@ export default defineToy({
       gl.uniform2f(shader.uniform('uRes'), ctx.width, ctx.height);
       gl.uniform1i(shader.uniform('uCount'), particles.length);
       gl.uniform4fv(shader.uniform('uParts'), packed);
+      // Park the magnet far off-screen when there is none, so the shader's
+      // pool of light and the spike axis both fall away to nothing.
       gl.uniform2f(
         shader.uniform('uMagnet'),
-        pointer.inside ? pointer.x : ctx.width * 0.5,
-        pointer.inside ? pointer.y : -ctx.height,
+        magnetLive ? magnetX : ctx.width * 0.5,
+        magnetLive ? magnetY : -ctx.height,
       );
       gl.uniform1f(shader.uniform('uSpike'), params.num('spike'));
       gl.uniform3f(shader.uniform('uSheen'), sr, sg, sb);

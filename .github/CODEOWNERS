@@ -1,0 +1,7 @@
+# The SDK and the shell are the contract every toy depends on, so changes there
+# get a look. Toys themselves do not need an owner: that is the whole point.
+/src/sdk/      @owenpkent
+/src/shell/    @owenpkent
+/src-tauri/    @owenpkent
+/.github/      @owenpkent
+/docs/TOY_API.md @owenpkent

@@ -203,24 +203,24 @@ export default defineToy({
       // Basin on the left, two thirds full of water.
       const left = Math.round(gridW * 0.12);
       const right = Math.round(gridW * 0.4);
-      const lip = floor - Math.round(gridH * 0.16);
+      const lip = floor - Math.round(gridH * 0.3);
       const wall = Math.max(2, Math.round(gridW * 0.006));
       fill(left, lip, left + wall, floor - 1, STONE);
       fill(right - wall, lip, right, floor - 1, STONE);
-      fill(left + wall + 1, lip + Math.round(gridH * 0.05), right - wall - 1, floor - 1, WATER);
+      fill(left + wall + 1, lip + Math.round(gridH * 0.08), right - wall - 1, floor - 1, WATER);
 
       // Dune on the right, a half sine so it settles instead of collapsing.
       const duneLeft = Math.round(gridW * 0.55);
       const duneRight = Math.round(gridW * 0.95);
       for (let x = duneLeft; x <= duneRight; x++) {
         const t = (x - duneLeft) / (duneRight - duneLeft);
-        const height = Math.round(Math.sin(t * Math.PI) * gridH * 0.14);
+        const height = Math.round(Math.sin(t * Math.PI) * gridH * 0.3);
         fill(x, floor - height, x, floor - 1, SAND);
       }
 
       // Posts, standing in the gap between the two.
       const post = Math.round(gridW * 0.47);
-      fill(post, floor - Math.round(gridH * 0.12), post + wall, floor - 1, WOOD);
+      fill(post, floor - Math.round(gridH * 0.26), post + wall, floor - 1, WOOD);
     };
 
     seedScene();

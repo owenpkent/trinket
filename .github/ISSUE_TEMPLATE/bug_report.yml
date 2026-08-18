@@ -1,0 +1,66 @@
+name: Bug report
+description: Something renders wrong, runs slow, or does not work.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Visual glitches are much easier to fix with a screenshot or a short clip.
+        Drag one straight into any text box below.
+
+  - type: dropdown
+    id: toy
+    attributes:
+      label: Which toy
+      options:
+        - Lava Lamp
+        - Falling Sand
+        - Ripple Pool
+        - Ferrofluid
+        - The shelf itself
+        - The SDK or the shell
+        - Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, and what you saw instead of what you expected.
+      placeholder: I dragged across the pool and the ripples came out as square blocks.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where were you running it
+      options:
+        - Browser (npm run dev or the live demo)
+        - Desktop build (Tauri)
+        - Both
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: OS and browser
+      placeholder: Windows 11, Chrome 141
+    validations:
+      required: true
+
+  - type: input
+    id: gpu
+    attributes:
+      label: GPU
+      description: Only needed for Lava Lamp and Ferrofluid, which run on WebGL2.
+      placeholder: RTX 4070, or Intel Iris Xe
+
+  - type: textarea
+    id: console
+    attributes:
+      label: Console output
+      description: Anything red in the browser console. Leave blank if there is nothing.
+      render: text

@@ -1,0 +1,45 @@
+name: SDK change
+description: The toy API is missing something, or a helper should exist.
+title: 'SDK: '
+labels: [sdk]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The SDK is a contract, so it gets more scrutiny than a new toy. The test
+        is whether two or more toys would use it. If only one toy needs it, it
+        probably belongs in that toy.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do
+      description: The problem, not the proposed API. Those are often different.
+    validations:
+      required: true
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: What did you do instead
+      description: >
+        What the toy has to do today to work around it. If the answer is
+        "reached into src/shell", say so plainly. That is exactly the signal
+        this issue exists to catch.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed shape
+      description: Optional. A signature or a sketch is enough.
+      render: typescript
+
+  - type: input
+    id: users
+    attributes:
+      label: Which toys would use it
+      placeholder: Ripple Pool and Ferrofluid, plus the chain pendulum in #12
+    validations:
+      required: true

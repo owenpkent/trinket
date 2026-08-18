@@ -24,6 +24,13 @@ toolchain and, on Windows, the MSVC build tools:
 python run.py desktop
 ```
 
+## Finding something to work on
+
+[IDEAS.md](IDEAS.md) is a list of toys nobody has built, sorted by how hard the
+physics is. The [`good first issue`](https://github.com/owenpkent/trinket/labels/good%20first%20issue)
+label has smaller, well-scoped work. Neither is a queue you have to join: if you
+want to build something that is on neither list, build it.
+
 ## Adding a toy
 
 1. Create `src/toys/your-toy/index.ts` with a `defineToy({...})` default export.
@@ -31,8 +38,9 @@ python run.py desktop
    you from re-deriving the fixed-timestep rules.
 2. Register it in `src/toys/index.ts`: one import, one entry in the array.
 3. Run `npm run verify`.
-4. Open a pull request with a sentence on what it feels like to use, and a GIF or
-   short clip if you can. This is a visual project; a clip is worth more than a
+4. Open a pull request. The template has a checklist; it is short, and every
+   line on it maps to something that has actually gone wrong. Include a GIF or a
+   short clip. This is a visual project, and a clip is worth more than any
    description.
 
 Put any shader next to the toy as a `.frag` file and import it with `?raw`.

@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Read the Toy API first
+    url: https://github.com/owenpkent/trinket/blob/main/docs/TOY_API.md
+    about: Everything a toy can do, and the rules the shell holds you to. Short.
+  - name: Toy ideas looking for an author
+    url: https://github.com/owenpkent/trinket/blob/main/IDEAS.md
+    about: A list of toys nobody has built yet. Claim one by opening an issue.
+  - name: Ask a question
+    url: https://github.com/owenpkent/trinket/discussions
+    about: For anything that is not a bug or a proposal.

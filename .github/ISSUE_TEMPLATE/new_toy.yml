@@ -1,0 +1,66 @@
+name: New toy
+description: Propose a toy, or claim one from IDEAS.md before you build it.
+title: 'Toy: '
+labels: [new toy]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        You do not need permission to build a toy. Open this if you want feedback
+        on the idea first, or to tell everyone you are working on it so two people
+        do not build the same thing.
+
+        Worth reading before you start: [docs/TOY_API.md](https://github.com/owenpkent/trinket/blob/main/docs/TOY_API.md).
+
+  - type: input
+    id: name
+    attributes:
+      label: What is it called
+      placeholder: Chain Pendulum
+    validations:
+      required: true
+
+  - type: textarea
+    id: feel
+    attributes:
+      label: What does it feel like to use
+      description: >
+        Describe the pointer interaction, not the implementation. What does the
+        mouse do, and what does the toy do back? This is the part that decides
+        whether a toy is any good.
+      placeholder: Drag the end of the chain and let go. Flick it and it whips.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Surface
+      options:
+        - '2d (canvas)'
+        - 'webgl (WebGL2)'
+        - Not sure yet
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: rules
+    attributes:
+      label: Design rules
+      description: All four are merge criteria. See the README if any are unclear.
+      options:
+        - label: Mouse only. Nothing needs the keyboard.
+          required: true
+        - label: No goal. No score, no timer, nothing to win.
+          required: true
+        - label: Instant. Playable the frame it opens.
+          required: true
+        - label: Quiet. No sound, nothing blinking for attention.
+          required: true
+
+  - type: checkboxes
+    id: claiming
+    attributes:
+      label: Are you building it
+      options:
+        - label: I am building this one, please do not assign it to anyone else.

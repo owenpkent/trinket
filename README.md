@@ -9,9 +9,26 @@
 Lava lamps, falling sand, ripple pools, magnetic goo. Pick one up, push it around,
 put it back. Runs as a native desktop window or in a browser tab from the same code.
 
+### [Play it now](https://owenpkent.github.io/trinket/)
+
+[![CI](https://github.com/owenpkent/trinket/actions/workflows/ci.yml/badge.svg)](https://github.com/owenpkent/trinket/actions/workflows/ci.yml)
+[![Demo](https://github.com/owenpkent/trinket/actions/workflows/pages.yml/badge.svg)](https://owenpkent.github.io/trinket/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 </div>
 
 ---
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/media/lava-lamp.png" alt="Lava Lamp" /></td>
+    <td width="50%"><img src="docs/media/falling-sand.png" alt="Falling Sand" /></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/media/ripple-pool.png" alt="Ripple Pool" /></td>
+    <td width="50%"><img src="docs/media/ferrofluid.png" alt="Ferrofluid" /></td>
+  </tr>
+</table>
 
 ## What is on the shelf
 
@@ -27,7 +44,8 @@ part of this project is that adding the fifth toy should take an afternoon.
 
 ## Design rules
 
-These are the constraints the whole project is built around.
+These are the constraints the whole project is built around, and they are the
+criteria a new toy is judged against.
 
 1. **Mouse only.** Everything a toy can do must be reachable with the pointer.
    No keyboard shortcut is ever the only way to do something, and no toy requires
@@ -111,9 +129,24 @@ export default defineToy({
 
 Then add two lines to `src/toys/index.ts` and it appears on the shelf.
 
-The full API, including the control types, the pointer contract, and the WebGL
-helpers, is in **[docs/TOY_API.md](docs/TOY_API.md)**. Contribution mechanics
-are in **[CONTRIBUTING.md](CONTRIBUTING.md)**.
+## Contributing
+
+New toys are the point of this repository.
+
+- **[IDEAS.md](IDEAS.md)** is a list of toys nobody has built yet, sorted by how
+  hard the physics is, with a note on where each one gets interesting. Claim one
+  by opening an issue, or just build it.
+- **[docs/TOY_API.md](docs/TOY_API.md)** is the full API: controls, the pointer
+  contract, the WebGL helpers, and the performance budget. It is short.
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** covers setup, what gets merged, and what
+  gets sent back.
+- **[AGENTS.md](AGENTS.md)** is the orientation file for coding agents, and a
+  decent summary for humans in a hurry.
+- **[SUPPORT.md](SUPPORT.md)**, **[SECURITY.md](SECURITY.md)** and the
+  **[code of conduct](CODE_OF_CONDUCT.md)** are where you would expect.
+
+Good first issues are labelled
+[`good first issue`](https://github.com/owenpkent/trinket/labels/good%20first%20issue).
 
 ## How it is put together
 
