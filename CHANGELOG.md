@@ -29,6 +29,10 @@ First cut. The platform and four toys.
   cursor, which is what produces the spikes.
 - **Desktop build**: Tauri v2 window with an always-on-top pin, offline by
   design, sharing the exact bundle the web build uses.
+- `run.py`: a stdlib-only launcher matching the convention used across the
+  other repos here. Opens the shelf or a single toy in a dedicated app window,
+  stops the dev server when that window closes, and carries subcommands for the
+  desktop build, the installers, verification, icons and a prerequisite check.
 - Documentation: `docs/TOY_API.md` and `CONTRIBUTING.md`.
 
 [Unreleased]: https://github.com/owenpkent/trinket/compare/v0.1.0...HEAD

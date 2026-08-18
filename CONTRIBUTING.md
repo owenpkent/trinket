@@ -10,15 +10,18 @@ build it and send the pull request.
 ```bash
 git clone https://github.com/owenpkent/trinket.git
 cd trinket
-npm install
-npm run dev
+python run.py
 ```
+
+`run.py` installs dependencies on first use and opens the shelf in its own
+window. `python run.py doctor` tells you what is missing. If you would rather
+drive npm directly, `npm install && npm run dev` does the same thing.
 
 That is the whole setup for web work. The desktop build additionally needs a Rust
 toolchain and, on Windows, the MSVC build tools:
 
 ```bash
-npm run desktop
+python run.py desktop
 ```
 
 ## Adding a toy

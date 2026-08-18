@@ -42,18 +42,30 @@ These are the constraints the whole project is built around.
 ## Running it
 
 ```bash
-npm install
-npm run dev        # browser, http://localhost:5173
-npm run desktop    # native window (Tauri v2)
+python run.py                  # the shelf, in its own app window
+python run.py toy lava-lamp    # straight into one toy
+python run.py menu             # pick from a list
+python run.py doctor           # check prerequisites
 ```
 
-Building:
+`run.py` is stdlib-only and installs dependencies on first use. It opens Trinket
+in a dedicated Chromium app window with no tab strip or address bar, and stops
+the dev server when you close that window, so there is nothing left running
+behind you. Without a Chromium browser it falls back to a normal tab.
+
+The npm scripts are all still there if you prefer them:
 
 ```bash
+npm install
+npm run dev            # browser, http://localhost:5173
+npm run desktop        # native window (Tauri v2)
 npm run build          # static site into dist/
 npm run desktop:build  # installers into src-tauri/target/release/bundle/
 npm run verify         # types, lint, tests
 ```
+
+`run.py` has the same set: `dev`, `toy`, `desktop`, `build`, `installer`,
+`verify`, `icon`, `doctor`, `menu`.
 
 The desktop build needs a Rust toolchain and, on Windows, the WebView2 runtime
 (already present on Windows 11) plus the MSVC build tools. The web build needs
